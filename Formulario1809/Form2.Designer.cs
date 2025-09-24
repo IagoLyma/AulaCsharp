@@ -40,7 +40,7 @@
             // lbl_email
             // 
             lbl_email.AutoSize = true;
-            lbl_email.BackColor = SystemColors.Control;
+            lbl_email.BackColor = Color.Transparent;
             lbl_email.Location = new Point(262, 65);
             lbl_email.Name = "lbl_email";
             lbl_email.Size = new Size(47, 15);
@@ -50,6 +50,7 @@
             // lbl_senha
             // 
             lbl_senha.AutoSize = true;
+            lbl_senha.BackColor = Color.Transparent;
             lbl_senha.Location = new Point(262, 184);
             lbl_senha.Name = "lbl_senha";
             lbl_senha.Size = new Size(39, 15);

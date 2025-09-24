@@ -6,8 +6,8 @@ namespace Formulario1809
 {
     public partial class Form1 : Form
     {
-        string dbPath = @"C:\Users\iago.lfarias\Downloads\Banco\Contato.db";
-        
+        string dbPath = @"C:\Users\iago.lfarias\Desktop\AulaCsharp\Banco\Contato.db";
+
 
         string connectString;
 
@@ -73,7 +73,7 @@ namespace Formulario1809
         private void Sair_Click(object sender, EventArgs e)
         {
 
-            if(Sair.Text == "Sair")
+            if (Sair.Text == "Sair")
             {
                 this.Close();
             }
@@ -86,7 +86,7 @@ namespace Formulario1809
                 MessageBox.Show("Você saiu da Edição de Usuários");
                 LimparCampos();
             }
-         
+
         }
 
         private void Incluir_Click(object sender, EventArgs e)
@@ -137,7 +137,7 @@ namespace Formulario1809
                                                Prospect=@Prospect
                                                WHERE CodigoCliente=@CodigoCliente";
 
-                        using(var cmd = new SQLiteCommand(sqlUpdate, connection))
+                        using (var cmd = new SQLiteCommand(sqlUpdate, connection))
                         {
                             cmd.Parameters.AddWithValue("@Nome", TxtName.Text);
                             cmd.Parameters.AddWithValue("@Telefone", TxtPhone.Text);
@@ -380,7 +380,7 @@ namespace Formulario1809
 
             Consultar.Enabled = false;
             Excluir.Enabled = false;
- 
+
 
         }
     }
