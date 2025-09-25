@@ -13,7 +13,7 @@ namespace Formulario1809
 {
     public partial class form_cadastro : Form
     {
-        string dbPath = @"C:\Users\Iago\Desktop\AulaCsharp\Banco\Contato.db";
+        string dbPath = @"C:\Users\iago.lfarias\Desktop\AulaCsharp\Banco\Contato.db";
 
         string connectionString;
 
@@ -183,14 +183,7 @@ namespace Formulario1809
 
         private void form_cadastro_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                $"Deseja realmente sair?", "Confirmação",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question );
-
-            if ( result == DialogResult.No )
-            {
-               e.Cancel = true;
-            }
+            Application.Exit();
         }
     }
 }

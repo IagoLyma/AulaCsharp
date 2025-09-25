@@ -37,8 +37,6 @@
             btn_cadastro = new Button();
             label1 = new Label();
             label2 = new Label();
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lbl_email
@@ -136,17 +134,6 @@
             label2.TabIndex = 7;
             label2.Text = "OU";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(496, 89);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(281, 259);
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
-            // 
             // form_login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -154,7 +141,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btn_cadastro);
@@ -169,7 +155,6 @@
             Text = "Login";
             FormClosing += form_login_FormClosing;
             Load += form_login_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -184,6 +169,5 @@
         private Button btn_cadastro;
         private Label label1;
         private Label label2;
-        private PictureBox pictureBox1;
     }
 }

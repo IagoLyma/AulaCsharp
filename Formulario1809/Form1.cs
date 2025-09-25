@@ -6,7 +6,7 @@ namespace Formulario1809
 {
     public partial class Form1 : Form
     {
-        string dbPath = @"C:\Users\Iago\Desktop\AulaCsharp\Banco\Contato.db";
+        string dbPath = @"C:\Users\iago.lfarias\Desktop\AulaCsharp\Banco\Contato.db";
 
 
         string connectString;
@@ -285,16 +285,7 @@ namespace Formulario1809
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-            DialogResult result = MessageBox.Show(
-                $"Deseja realmente sair?", "Confirmação",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-                );
-
-            if (result == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
+            Application.Exit();
 
             Application.OpenForms["form_login"]?.Show();
         }
