@@ -13,7 +13,7 @@ namespace Formulario1809
 {
     public partial class form_login : Form
     {
-        string dbPath = @"C:\Users\iago.lfarias\Desktop\AulaCsharp\Banco\Contato.db";
+        string dbPath = @"C:\Users\Iago\Desktop\AulaCsharp\Banco\Contato.db";
 
         string connectionString;
         public form_login()
@@ -112,6 +112,18 @@ namespace Formulario1809
             form_cadastro form = new form_cadastro();
             form.Show();
             this.Hide();
+        }
+
+        private void form_login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                $"Deseja realmente sair?", "Confirmação",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

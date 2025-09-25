@@ -13,7 +13,7 @@ namespace Formulario1809
 {
     public partial class form_cadastro : Form
     {
-        string dbPath = @"C:\Users\iago.lfarias\Desktop\AulaCsharp\Banco\Contato.db";
+        string dbPath = @"C:\Users\Iago\Desktop\AulaCsharp\Banco\Contato.db";
 
         string connectionString;
 
@@ -97,14 +97,14 @@ namespace Formulario1809
                 {
                     connection.Open();
 
-                    string sqlinsert = @"INSERT INTO Usuarios (NomeUsuario, Senha) VALUES (@User, @Senha)";
+                    string sqlinsert = @"INSERT INTO Usuarios (NomeUsuario, Senha) VALUES (@User, @Senha);";
 
                     using (var cmd = new SQLiteCommand(sqlinsert, connection))
                     {
                         cmd.Parameters.AddWithValue("@User", txt_user.Text);
 
                         cmd.Parameters.AddWithValue("@Senha", txt_senha.Text);
-                        
+
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -115,7 +115,81 @@ namespace Formulario1809
             }
             catch (Exception ex)
             {
+                validation();
                 MessageBox.Show($"Erro ao criar conta {ex.Message}");
+            }
+        }
+
+        private void validation()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sqlselect = "SELECT * FROM Usuarios WHERE NomeUsuario = @User;";
+
+                    using (var cmd = new SQLiteCommand(sqlselect, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@User", txt_user.Text);
+
+                        cmd.ExecuteNonQuery();
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                MessageBox.Show("Usuário já existente!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void ConsultarUsuarios()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string sqlconsulta = "SELECT * FROM Usuarios";
+
+                    using (var grid = new SQLiteDataAdapter(sqlconsulta, connection))
+                    {
+                        DataTable dt = new DataTable(); //Cria o data table
+                        grid.Fill(dt); //preenche o data table
+                        grid_users.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao consultar usuários!: {ex.Message}");
+            }
+        }
+
+        private void btn_consultar_Click(object sender, EventArgs e)
+        {
+            ConsultarUsuarios();
+        }
+
+        private void form_cadastro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                $"Deseja realmente sair?", "Confirmação",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+
+            if ( result == DialogResult.No )
+            {
+               e.Cancel = true;
             }
         }
     }
